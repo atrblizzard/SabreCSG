@@ -164,8 +164,12 @@ namespace Sabresaurus.SabreCSG
 	            this.vertices[i].Normal *= -1;
 	        }
 
-			// Flip the cached plane
-			cachedPlane = cachedPlane.Value.Flip();
+            // Flip the cached plane
+#if UNITY_2017
+            cachedPlane.Value.Flip();
+#else
+            cachedPlane = cachedPlane.Value.Flip();
+#endif
 	    }
 
 		public void SetVertices(Vertex[] vertices)
